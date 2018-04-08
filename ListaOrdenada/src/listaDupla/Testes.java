@@ -4,22 +4,23 @@ public class Testes {
 
 public static void main(String[] args) {
 		
-		ListaEncadeada<String> l1 = new ListaEncadeada<String>();
+		ListaEncadeada<Aluno> l1 = new ListaEncadeada<Aluno>();
 		
-		for (int i = 1; i <= 4; i++) {
-			String s = "* " + Integer.toString(i) + " *";
-			l1.inserirFinal(s);
-			System.out.println("Item inserido na lista de String: " + s);
+		try {
+			l1.inserirFinal(new Aluno("Jose"));
+			l1.inserirFinal(new Aluno("Pedro"));
+			l1.inserirFinal(new Aluno("Joao"));
+			l1.inserirFinal(new Aluno("Jorge"));
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
-
-		System.out.println("===================");
 		
-		l1.inserirFinal("FINAL");
-		l1.inserirInicio("INICIO");
 
 		try {
-			for (int i = 1; i <= 7; i++) {
-				System.out.println("Elemento retirado do inicio da lista de String: " + l1.retirarInicio());
+			for (int i = 1; i <= 4; i++) {
+				//Aluno a = l1.retirarInicio();
+				Aluno a = l1.retirarFim();
+				System.out.printf("Aluno retirado da lista: %s; matricula: %d\n", a.getNome(), a.getMatricula());
 			}
 		} catch(Exception e) {
 			System.out.println(e);
