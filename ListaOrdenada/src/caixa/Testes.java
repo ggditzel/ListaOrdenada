@@ -19,10 +19,10 @@ public class Testes {
 			e.printStackTrace();
 		}
 		
-		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item1.getValor(), item1.getProximo(), item1.getAnterior());
-		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item2.getValor(), item2.getProximo(), item2.getAnterior());
-		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item3.getValor(), item3.getProximo(), item3.getAnterior());
-		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item4.getValor(), item4.getProximo(), item4.getAnterior());
+		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item1.getElemento(), item1.getProximo(), item1.getAnterior());
+		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item2.getElemento(), item2.getProximo(), item2.getAnterior());
+		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item3.getElemento(), item3.getProximo(), item3.getAnterior());
+		System.out.printf("valor: %.2f; proximo: %s; anterior: %s\n", item4.getElemento(), item4.getProximo(), item4.getAnterior());
 		
 	}
 

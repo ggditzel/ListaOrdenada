@@ -1,8 +1,8 @@
 package listaDupla;
 
-public class Aluno {
-	private int matricula;
+public class Aluno implements IBuscavel {
 	private static int matriculaGerada;
+	private int matricula;
 	private String nome;
 	
 	public Aluno(String nome) throws Exception {
@@ -10,7 +10,7 @@ public class Aluno {
 		this.nome = nome;
 	}
 	
-	public int getMatricula() {
+	public int getCodigo() {
 		return matricula;
 	}
 
@@ -21,11 +21,13 @@ public class Aluno {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
+	public void setMatricula(int matricula) {
+		this.matricula = matricula;
+	}
+	
 	private int geraMatricula() throws Exception {
-		if ( matriculaGerada == Integer.MAX_VALUE) {
-			throw new Exception("Limite de matriculas atingido");
-		}
+		if ( matricula == Integer.MAX_VALUE) throw new Exception("Limite de matriculas atingido");
 		return matriculaGerada++;
 	}
 }

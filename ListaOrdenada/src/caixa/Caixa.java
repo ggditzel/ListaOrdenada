@@ -2,22 +2,22 @@ package caixa;
 
 public class Caixa<T> {
 	
-	private T valor;
+	private T elemento;
 	private Caixa<T> proximo;
 	private Caixa<T> anterior;
 	
-	public Caixa(T valor) {
+	public Caixa(T elemento) {
 		this.proximo = null;
 		this.anterior = null;
-		this.valor = valor;
+		this.elemento = elemento;
 	}
 	
-	public T getValor() {
-		return this.valor;
+	public T getElemento() {
+		return this.elemento;
 	}
 	
-	public void setValor(T valor) {
-		this.valor = valor;
+	public void setElemento(T elemento) {
+		this.elemento = elemento;
 	}
 	
 	public Caixa<T> getProximo() {
