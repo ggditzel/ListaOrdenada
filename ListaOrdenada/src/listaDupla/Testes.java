@@ -6,7 +6,7 @@ public static void main(String[] args) {
 	
 	Aluno buscado;
 		
-		ListaEncadeada2<Aluno> l1 = new ListaEncadeada2<Aluno>();
+		ListaEncadeada<Aluno> l1 = new ListaEncadeada<Aluno>();
 		
 		System.out.printf("Fila vazia? %s\n", l1.isEmpty() ? "Sim" : "Nao");
 		
