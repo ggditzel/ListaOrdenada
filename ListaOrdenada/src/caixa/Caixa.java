@@ -6,6 +6,12 @@ public class Caixa<T> {
 	private Caixa<T> proximo;
 	private Caixa<T> anterior;
 	
+	public Caixa() {
+		this.proximo = null;
+		this.anterior = null;
+		this.elemento = elemento;
+	}
+	
 	public Caixa(T elemento) {
 		this.proximo = null;
 		this.anterior = null;

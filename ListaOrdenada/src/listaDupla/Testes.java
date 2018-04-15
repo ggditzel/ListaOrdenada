@@ -14,23 +14,24 @@ public class Testes {
 		Aluno a4 = null;
 		Aluno a5 = null;
 		try {
-			a1 = new Aluno("Jose");
-			a2 = new Aluno("Joao");
-			a3 = new Aluno("Silvio");
-			a4 = new Aluno("Paulo");
-			a5 = new Aluno("Ninguem");
-//			 l1.inserirFinal(a4);
-//			 l1.inserirFinal(a1);
-//			 l1.inserirFinal(a3);
-//			 l1.inserirFinal(a2);
-			l1.inserirInicio(a4);
-			l1.inserirInicio(a1);
-			l1.inserirInicio(a3);
-			l1.inserirInicio(a2);
-			for (int i = 1; i <= 3; i++) {
+			a1 = new Aluno("Jose", 13);
+			a2 = new Aluno("Joao", 24);
+			a3 = new Aluno("Silvio", 69);
+			a4 = new Aluno("Paulo", 51);
+			a5 = new Aluno("Ninguem", 42);
+			l1.inserirFinal(a4);
+			l1.inserirFinal(a1);
+			l1.inserirFinal(a3);
+			l1.inserirFinal(a2);
+//			l1.inserirInicio(a4);
+//			l1.inserirInicio(a1);
+//			l1.inserirInicio(a3);
+//			l1.inserirInicio(a2);
+			for (int i = 1; i <= 2; i++) {
 				l1.avancarCursor();
 			}
-			l1.inserirPosAtual(a5);
+			//l1.inserirAntesAtual(a5);
+			l1.inserirAposAtual(a5);
 
 		} catch (Exception e2) {
 			System.out.println(e2);
@@ -68,12 +69,13 @@ public class Testes {
 		// System.out.println(e1);
 		// }
 
-		try {
-			l1.buscar(a5);
-			l1.excluirPosAtual();
-		} catch (Exception e1) {
-			System.out.println(e1);
-		}
+//		try {
+//			l1.buscar(51);
+//			l1.excluirPosAtual();
+//		} catch (Exception e1) {
+//			e1.printStackTrace();
+			//System.out.println(e1);
+	//	}
 
 		// l1.avancarCursor();
 		// l1.avancarCursor();
@@ -85,7 +87,7 @@ public class Testes {
 //		}
 
 		try {
-			for (int i = 1; i <= 4; i++) {
+			for (int i = 1; i <= 5; i++) {
 				//Aluno a = l1.retirarInicio();
 				Aluno a = l1.retirarFinal();
 				System.out.printf("Aluno retirado da lista: %s; matricula: %d; referencia: %s\n", a.getNome(),
@@ -94,8 +96,8 @@ public class Testes {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-
-		System.out.printf("Fila vazia? %s\n", l1.isEmpty() ? "Sim" : "Nao");
+//
+//		System.out.printf("Fila vazia? %s\n", l1.isEmpty() ? "Sim" : "Nao");
 
 	}
 
