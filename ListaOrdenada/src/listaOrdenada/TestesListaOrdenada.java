@@ -16,6 +16,7 @@ public class TestesListaOrdenada {
 		Aluno a4 = new Aluno("Paulo", 51);
 		Aluno a5 = new Aluno("Ninguem", 42);
 
+		// Criacao da lista
 		try {
 			lista.inserirOrdenado(a5);
 			lista.inserirOrdenado(a3);
@@ -26,15 +27,48 @@ public class TestesListaOrdenada {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		// buscar por ID
+
+		// verificar a lista
 		try {
-			Aluno buscado = lista.buscar(13);
+			lista.imprimeLista();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		
+		// buscar por ID que nao existe
+		try {
+			int codigo = 22;
+			System.out.printf("\n(procurando por codigo %d...)\n", codigo);
+			Aluno buscado = lista.buscar(codigo);
 			System.out.printf("Elemento buscado/lido: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+
 		
+		//buscar por ID que existe
+		try {
+			int codigo = 69;
+			System.out.printf("\n(procurando por codigo %d...)\n", codigo);
+			Aluno buscado = lista.buscar(codigo);
+			System.out.printf("Elemento buscado/lido: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+		
+		// exclusao
+		try {
+			int codigo = 13;
+			System.out.printf("\n(procurando por codigo %d...)\n", codigo);
+			Aluno buscado = lista.buscar(codigo);
+			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
+			lista.excluir(buscado.getCodigo());
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
 		// verificar a lista
 		try {
 			lista.imprimeLista();
@@ -44,57 +78,40 @@ public class TestesListaOrdenada {
 		
 		// exclusao
 		try {
-			Aluno buscado = lista.buscar(42);
+			int codigo = 51;
+			System.out.printf("\n(procurando por codigo %d...)\n", codigo);
+			Aluno buscado = lista.buscar(codigo);
 			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
 			lista.excluir(buscado.getCodigo());
-			
-			buscado = lista.buscar(69);
-			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
-			lista.excluir(buscado.getCodigo());
-			
-			buscado = lista.buscar(13);
-			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
-			lista.excluir(buscado.getCodigo());
-			
-			buscado = lista.buscar(24);
-			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
-			lista.excluir(buscado.getCodigo());
-			
-			buscado = lista.buscar(51);
-			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
-			lista.excluir(buscado.getCodigo());
-			
-			
-		} catch (ElementoNaoEncontradoException e) {
-			System.out.println(e.getMessage());
-		} catch (FilaVaziaException e) {
-			System.out.println(e.getMessage());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		// verificar a lista
 		try {
 			lista.imprimeLista();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
-		// excluir de lista vazia
+
+
+		// exclusao de item que nao existe
 		try {
-			Aluno buscado = lista.buscar(42);
+			int codigo = 86;
+			System.out.printf("\n(procurando por codigo %d...)\n", codigo);
+			Aluno buscado = lista.buscar(codigo);
 			System.out.printf("Elemento retirado: codigo: %d; nome: %s\n", buscado.getCodigo(), buscado.getNome());
-			lista.excluir(buscado.getCodigo());			
-			
-		} catch (ElementoNaoEncontradoException e) {
-			System.out.println(e.getMessage());
-		} catch (FilaVaziaException e) {
-			System.out.println(e.getMessage());
+			lista.excluir(buscado.getCodigo());
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		
+
+		// verificar a lista
+		try {
+			lista.imprimeLista();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}		
 	}
 
 }

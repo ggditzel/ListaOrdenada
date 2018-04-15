@@ -123,7 +123,6 @@ public class ListaEncadeada<T extends IBuscavel> {
 	}
 
 	/**
-	 * "Insere Antes"
 	 * Insere o elemento especificado antes do atual; apos a inclusao o cursor aponta para a posicao original
 	 * @param elemento a ser incluido
 	 */

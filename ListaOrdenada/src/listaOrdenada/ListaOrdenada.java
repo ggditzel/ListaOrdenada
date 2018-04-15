@@ -2,7 +2,6 @@ package listaOrdenada;
 
 import java.util.ArrayList;
 
-import listaDupla.Aluno;
 import listaDupla.IBuscavel;
 import listaDupla.ListaEncadeada;
 
@@ -15,11 +14,12 @@ public class ListaOrdenada <T extends IBuscavel> {
 	}
 	
 	public T buscar(int ID) throws Exception {
-		lista.buscar(ID);
-		return lista.lerAtual();
+			lista.buscar(ID);
+			return lista.lerAtual();
 	}
 	
 	public void excluir(int ID) throws Exception {
+		
 		lista.buscar(ID);
 		lista.excluirItem(ID);
 	}
@@ -45,18 +45,6 @@ public class ListaOrdenada <T extends IBuscavel> {
 				lista.inserirAntesAtual(elemento);
 			}
 		}
-//		lista.cursorParaPrimeiro();
-//		if (elemento.getCodigo() > )
-//		
-//		if (lista.isEmpty()) {
-//			lista.inserirAposAtual(elemento);
-//		} else {
-//			while (elemento.getCodigo() > lista.lerAtual().getCodigo()) {
-//				lista.avancarCursor();
-//			}
-//			
-//			lista.inserirAntesAtual(elemento);
-//		}
 	}
 	
 	/**

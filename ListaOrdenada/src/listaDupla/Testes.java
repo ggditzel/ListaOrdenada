@@ -19,10 +19,6 @@ public class Testes {
 			a3 = new Aluno("Silvio", 69);
 			a4 = new Aluno("Paulo", 51);
 			a5 = new Aluno("Ninguem", 42);
-//			l1.inserirFinal(a4);
-//			l1.inserirFinal(a1);
-//			l1.inserirFinal(a3);
-//			l1.inserirFinal(a2);
 			l1.inserirInicio(a4);
 			l1.inserirInicio(a1);
 			l1.inserirInicio(a3);
@@ -33,12 +29,7 @@ public class Testes {
 			for (int i = 1; i <= 1; i++) {
 				l1.voltarCursor();
 			}
-			//l1.inserirAntesAtual(a5);
-			//l1.inserirAposAtual(a5);
-			//l1.inserirFinal(a5);
 			l1.inserirFinal(a5);
-//			l1.buscar(69);
-//			l1.excluirPosAtual();
 	
 
 		} catch (Exception e2) {
@@ -47,52 +38,6 @@ public class Testes {
 
 		System.out.printf("Fila vazia? %s\n", l1.isEmpty() ? "Sim" : "Nao, tamanho " + l1.getNumElementos());
 
-		// try {
-		// buscado = l1.buscar(1).getElemento();
-		// System.out.printf("Aluno encontrado pelo codigo: %s; matricula: %d; cursor:
-		// %s\n", buscado.getNome(), buscado.getCodigo(), buscado);
-		// } catch (Exception e1) {
-		// System.out.println(e1);
-		// }
-		//
-		// try {
-		// buscado = l1.buscar2(a3).getElemento();
-		// System.out.printf("Aluno encontrado: %s; matricula: %d; cursor: %s\n",
-		// buscado.getNome(), buscado.getCodigo(), buscado);
-		// } catch (Exception e1) {
-		// System.out.println(e1);
-		// }
-		//
-		// try {
-		// buscado = l1.buscar2(desconhecido).getElemento();
-		// System.out.printf("Aluno encontrado: %s; matricula: %d; cursor: %s\n",
-		// buscado.getNome(), buscado.getCodigo(), buscado);
-		// } catch (Exception e1) {
-		// System.out.println(e1);
-		// }
-
-		// try {
-		// l1.excluirItem(a3);
-		// } catch (Exception e1) {
-		// System.out.println(e1);
-		// }
-
-//		try {
-//			l1.buscar(51);
-//			l1.excluirPosAtual();
-//		} catch (Exception e1) {
-//			e1.printStackTrace();
-			//System.out.println(e1);
-	//	}
-
-		// l1.avancarCursor();
-		// l1.avancarCursor();
-		// l1.avancarCursor();
-//		try {
-//			l1.excluirPosAtual();
-//		} catch (Exception e1) {
-//			System.out.println(e1);
-//		}
 
 		try {
 			l1.cursorParaPrimeiro();
