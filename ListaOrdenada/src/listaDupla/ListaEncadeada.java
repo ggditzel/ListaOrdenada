@@ -17,27 +17,19 @@ public class ListaEncadeada<T extends IBuscavel> {
 	}
 
 	public void inserirFinal(T elemento) {
-		if (primeiro == null) {
-			cursor = primeiro;
-		} 
-		
-//		else {
-//			cursor = primeiro.getAnterior(); // ultimo
-//		}
-		
-		System.out.println("\nPosicao do cursor para insercao no final: " + cursor);
+		cursorParaUltimo();
 		inserirAposAtual(elemento);
 		
 	}
 	
 	public void inserirInicio(T elemento) {
-		cursor = primeiro;
+		cursorParaPrimeiro();
 		inserirAntesAtual(elemento);
 	}
 
 	public T retirarInicio() throws Exception {
 
-		if (primeiro == null) throw new Exception("Fila vazia");
+		if (primeiro == null) throw new FilaVaziaException();
 
 		T elemento = primeiro.getElemento();
 		excluirInicio();
@@ -46,11 +38,9 @@ public class ListaEncadeada<T extends IBuscavel> {
 
 	public T retirarFinal() throws Exception {
 
-		if (primeiro == null) throw new Exception("Fila vazia");
+		if (primeiro == null) throw new FilaVaziaException();
 
 		T elemento = primeiro.getAnterior().getElemento();
-//		System.out.printf("\n === Primeiro aponta para %s; endereco proximo: %s; endereco anterior: %s", primeiro, primeiro.getProximo(), primeiro.getAnterior());
-//		System.out.println("\nElemento a ser retirado do final: " + primeiro.getAnterior().getElemento().getCodigo());
 		excluirFinal();
 
 		return elemento;
@@ -71,59 +61,44 @@ public class ListaEncadeada<T extends IBuscavel> {
 	 * @throws Exception - indica fila vazia ou elemento nao encontrado
 	 */
 	public void buscar(int ID) throws Exception {
-		if (primeiro == null) throw new Exception("Fila vazia");
+		if (primeiro == null) throw new FilaVaziaException();
 				
 		if (cursor.getElemento().getCodigo() != ID) { // caso ja seja o elemento, nao faz nada
 			
 			//gambiarra para criar um fake do tipo correto
 			T fake = (T) cursor.getElemento().getFake(ID);
-			
-			System.out.printf("\ncodigo do fake criado da classe Aluno: %d\n", fake.getCodigo());
-			
-			System.out.println("\n=== busca elemento ===");
-			System.out.println("Posicao atual do cursor: " + cursor);
 			inserirAntesAtual(fake);
 			Caixa<T> posicaoFake = cursor.getAnterior(); // posicao do fake;
-			//avancarCursor();
-			System.out.println("Elemento fake inserido na posicao: " + posicaoFake);
+
 			while (cursor.getElemento().getCodigo() != ID) {
-				System.out.println("Endereco do cursor: " + cursor);
-				System.out.println("Codigo lido no cursor: " + cursor.getElemento().getCodigo());
-				System.out.println("Cursor vai para proxima posicao: " + cursor.getProximo());
 				cursor = cursor.getProximo();
 			}
 
 			if (cursor != posicaoFake) {
 				Caixa<T> posicaoEncontrado = cursor;
-				System.out.println("Posicao onde elemento foi encontrado: " + cursor);
 				cursor = posicaoFake; // preparar para exclusao do fake 
 				excluirPosAtual();
 				cursor = posicaoEncontrado;
-				System.out.println("posicao do cursor ao deixar a busca: " + cursor);
-				System.out.println("=== fim busca elemento ===\n");
 			} else {
 				excluirPosAtual();
-				throw new Exception("Elemento nao encontrado");
+				throw new ElementoNaoEncontradoException();
 			}
 		}
 		
 	}
 	
 	public void excluirInicio() throws Exception {
-		cursor = primeiro;
+		cursorParaPrimeiro();
 		excluirPosAtual();
-		//System.out.printf("Elmento excluido do inicio da lista; primeiro: %s; cursor: %s\n", primeiro, cursor);
 	}
 
 	public void excluirFinal() throws Exception {
-		cursor = primeiro.getAnterior();
-	//	System.out.println("Elemento a ser excluido do final: " + cursor);
+		cursorParaUltimo();
 		excluirPosAtual();
 	}
 
 	public void excluirPosAtual() throws Exception {
-		//System.out.println("\nPosicao do cursor ao chegar no metodo para excluir atual: " + cursor);
-		if (primeiro == null) throw new Exception("Fila vazia");
+		if (primeiro == null) throw new FilaVaziaException();
 
 		if (size == 1) {				// ultimo elemento
 			primeiro = cursor = null;	// apaga tudo, reset
@@ -136,7 +111,6 @@ public class ListaEncadeada<T extends IBuscavel> {
 			cursor.getAnterior().setProximo(cursor.getProximo());
 			cursor.getProximo().setAnterior(cursor.getAnterior());
 			cursor = cursor.getAnterior(); //cursor.getAnterior(); //Proximo(); // aponta para o elemento posterior ao excluido
-		//	System.out.println("Posicao do cursor apos exclusao atual: " + cursor);
 		}
 
 		size--;
@@ -186,24 +160,14 @@ public class ListaEncadeada<T extends IBuscavel> {
 			primeiro = cursor = novo;
 			primeiro.setAnterior(primeiro); // se so existe o primeiro elemento, ele aponta para ele mesmo
 			primeiro.setProximo(primeiro);
-			System.out.println("\n*** Criado primeiro elemento na posicao " + novo);
-			System.out.printf("Primeiro: %s; cursor: %s; ultimo: %s\n", primeiro, cursor, primeiro.getAnterior());
 
 		} else {
 			
-//			// se for inserir na ultima posicao, atualiza o ponteiro para o ultimo elemento
-//			if (cursor == primeiro.getAnterior() & size >= 1) {
-//				primeiro.setAnterior(novo);
-//			}
-			
-			System.out.println("\n*** Criado novo elemento na posicao: " + novo);
 			novo.setAnterior(cursor);
 			novo.setProximo(cursor.getProximo());
 			cursor.getProximo().setAnterior(novo);
 			cursor.setProximo(novo);
 			cursor = novo;
-			System.out.println("\nApos da insercao, o cursor fica na posicao : " + cursor);
-			System.out.printf("Primeiro: %s; cursor: %s; ultimo: %s\n", primeiro, cursor, primeiro.getAnterior());
 		}
 		size++;
 
@@ -211,7 +175,28 @@ public class ListaEncadeada<T extends IBuscavel> {
 	
 
 	public void avancarCursor() {
-		System.out.printf("Cursor avancou de %s para %s\n", cursor, cursor.getProximo());
 		cursor = cursor.getProximo();
+	}
+	
+	public void voltarCursor() {
+		cursor = cursor.getAnterior();
+	}
+	
+	public T lerAtual() throws Exception {
+		if (primeiro == null) throw new FilaVaziaException();
+		return cursor.getElemento();
+	}
+		
+	public void cursorParaPrimeiro () {
+		cursor = primeiro;
+	}
+	
+	public void cursorParaUltimo() {
+		if (primeiro == null) {
+			cursor = primeiro;
+		}
+		else {
+			cursor = primeiro.getAnterior();
+		}
 	}
 }
